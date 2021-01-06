@@ -9,7 +9,7 @@ export default function Details(props) {
       fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
         .then(response => response.json())
         .then(json => settodoDetails(json))
-    }, [])
+    }, [id])
 
     return (
         <div className='code'>
