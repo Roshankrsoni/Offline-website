@@ -12,7 +12,6 @@ export async function addTodo(todos) {
           return db.put(todo, function callback(err, result) {
             if (!err) {
               console.log('Successfully posted a todo!');
-              result
             }
           });
     })

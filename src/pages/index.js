@@ -5,11 +5,10 @@ import  { addTodo, showTodos } from "../db";
 
 export default function Index() {
     const [todos, setTodos] = useState([]);
-    const [offline, setOffline] = useState(false);
-
+    const [offline, setOffline] = useState(localStorage.getItem('offline'));
     
     useEffect(() => {
-    let offlineLS = localStorage.getItem('offline');
+    const offlineLS = localStorage.getItem('offline');
 
      if(offlineLS) {
         console.log('== Make it available offline ==');
@@ -42,7 +41,8 @@ export default function Index() {
         <>
         <h1>Todos {todos?.length}</h1>
         <div className="onoffswitch">
-        <input type="checkbox" onChange={toggleDocs} name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch" tabIndex="0" checked={!localStorage.getItem('offline')} />
+        <input type="checkbox" onChange={toggleDocs} name="onoffswitch" className="onoffswitch-checkbox" 
+        id="myonoffswitch" tabIndex="0" checked={!offline} />
         <label className="onoffswitch-label" htmlFor="myonoffswitch">
             <span className="onoffswitch-inner"></span>
             <span className="onoffswitch-switch"></span>
